@@ -91,6 +91,7 @@ func (m *Message) toRequest() messageRequest {
 	var req messageRequest
 
 	req.Message = messageRequestMessage{
+		ID:              m.ID,
 		Text:            m.Text,
 		Type:            m.Type,
 		Attachments:     m.Attachments,
@@ -124,6 +125,7 @@ type messageRequest struct {
 }
 
 type messageRequestMessage struct {
+	ID              string                 `json:"id,omitempty"`
 	Text            string                 `json:"text"`
 	Type            MessageType            `json:"type" validate:"omitempty,oneof=system"`
 	Attachments     []*Attachment          `json:"attachments"`
